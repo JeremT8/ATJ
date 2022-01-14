@@ -1,14 +1,14 @@
 <?php
 
-function countBooks(string $search){
+function countJeu(string $search){
     $searchQuery = "";
     $params = [];
     if(! empty($search)){
-        $searchQuery = " WHERE auteur= :search OR genre= :search OR editeur= :search";
+        $searchQuery = " WHERE nom= :search OR prenom= :search OR email= :search OR code_postal=:search OR ville=:search OR date_souscription=:search";
         $params = ["search" => $search];
     } 
 
-    $sql = "SELECT COUNT(*) as nb FROM livres_simples $searchQuery ";
+    $sql = "SELECT COUNT(*) as nb FROM jeu $searchQuery ";
 
     
     $statement = getPDO()->prepare($sql);
@@ -22,11 +22,11 @@ function countBooks(string $search){
     }
 }
 
-function findBooks(array $pagination, string $search){
-    $sql = "SELECT * FROM livres_simples ";
+function findJeu(array $pagination, string $search){
+    $sql = "SELECT * FROM jeu ";
     
     if(! empty($search)){
-        $sql .= "WHERE auteur_nom= :search OR auteur_prenom= :search OR genre= :search OR editeur= :search ";
+        $sql .= "WHERE nom= :search OR prenom= :search OR email= :search OR code_postal=:search OR ville=:search OR date_souscription=:search ";
     }
 
     $sql .= "LIMIT :limit OFFSET :offset";
@@ -45,7 +45,7 @@ function findBooks(array $pagination, string $search){
     if(! empty($search)){
         $statement->bindValue("search", $search, PDO::PARAM_STR);
     }
-	var_dump($sql);
+	var_dump($statement);
     $statement->execute();
 	
     return $statement->fetchAll();
