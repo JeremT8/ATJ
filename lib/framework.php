@@ -87,7 +87,7 @@ function getLinkToRoute(string $route, array $query = []): string
 		$queryString .= "&$key=$value";
 	}
 
-	return "/ElePhp/index.php?page=$route$queryString";
+	return "/index.php?page=$route$queryString";
 }
 
 
