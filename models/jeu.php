@@ -1,14 +1,14 @@
 <?php
 
-function countJeu(string $search){
-    $searchQuery = "";
+function countJeu(string $searchJeu){
+    $searchJeuQuery = "";
     $params = [];
-    if(! empty($search)){
-        $searchQuery = " WHERE nom= :search OR prenom= :search OR email= :search OR code_postal=:search OR ville=:search OR date_souscription=:search";
-        $params = ["search" => $search];
+    if(! empty($searchJeu)){
+        $searchJeuQuery = " WHERE titre= :searchJeu OR editeur= :searchJeu OR type_jeu= :searchJeu OR duree= :searchJeu";
+        $params = ["searchJeu" => $searchJeu];
     } 
 
-    $sql = "SELECT COUNT(*) as nb FROM jeu $searchQuery ";
+    $sql = "SELECT COUNT(*) as nb FROM jeu $searchJeuQuery ";
 
     
     $statement = getPDO()->prepare($sql);
@@ -22,18 +22,18 @@ function countJeu(string $search){
     }
 }
 
-function findJeu(array $pagination, string $search){
+function findJeu(array $paginationJeu, string $searchJeu){
     $sql = "SELECT * FROM jeu ";
     
-    if(! empty($search)){
-        $sql .= "WHERE nom= :search OR prenom= :search OR email= :search OR code_postal=:search OR ville=:search OR date_souscription=:search ";
+    if(! empty($searchJeu)){
+        $sql .= " WHERE titre= :searchJeu OR editeur= :searchJeu OR type_jeu= :searchJeu OR duree = :searchJeu";
     }
 
-    $sql .= "LIMIT :limit OFFSET :offset";
+    $sql .= " LIMIT :limit OFFSET :offset";
     
 
-    $offset = $pagination["currentPage"] * $pagination["numberPerPage"];
-    $limit = $pagination["numberPerPage"];
+    $offset = $paginationJeu["currentPage"] * $paginationJeu["numberPerPage"];
+    $limit = $paginationJeu["numberPerPage"];
 
 	
 
@@ -42,10 +42,9 @@ function findJeu(array $pagination, string $search){
     $statement->bindValue("limit", $limit, PDO::PARAM_INT);
     $statement->bindValue("offset", $offset, PDO::PARAM_INT);
 
-    if(! empty($search)){
-        $statement->bindValue("search", $search, PDO::PARAM_STR);
+    if(! empty($searchJeu)){
+        $statement->bindValue("searchJeu", $searchJeu, PDO::PARAM_STR);
     }
-	var_dump($statement);
     $statement->execute();
 	
     return $statement->fetchAll();

@@ -53,6 +53,8 @@ function getTemplateContent(string $template, array $params = []): string
 	}
 
 	return $content;
+	var_dump($templatePath);
+	var_dump($content);
 }
 
 

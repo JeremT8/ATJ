@@ -45,7 +45,6 @@ function findAdherent(array $pagination, string $search){
     if(! empty($search)){
         $statement->bindValue("search", $search, PDO::PARAM_STR);
     }
-	var_dump($statement);
     $statement->execute();
 	
     return $statement->fetchAll();

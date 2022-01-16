@@ -148,16 +148,19 @@ CREATE TABLE `adherent` (
   INSERT INTO `adherent` VALUES ('', 'Ostillet', 'Osjeremy', '1997-06-08', 'jeremytillet8@gùail.com', '3', 'route de chauvigny', '86210', 'Pouillé', '2022-01-15');
 
 
+  
   CREATE TABLE `jeu` (
     `id` mediumint unsigned NOT NULL AUTO_INCREMENT,
     `titre` varchar(80) NOT NULL,
     `editeur` varchar(80) NOT NULL,
-    `date_naissance` date DEFAULT NULL,
-    `email` varchar(50) NOT NULL,
-    `numero_rue` tinyint NOT NULL,
-    `rue` varchar(38) NOT NULL,
-    `code_postal` varchar(5) NOT NULL,
-    `ville` varchar(33) Not NULL,
-    `date_souscription` date DEFAULT NULL,
+    `type_jeu` varchar(80) NOT NULL,
+    `duree` TINYINT NOT NULL,
+    `date_ajout` date DEFAULT NULL,
     PRIMARY KEY (`id`)
   );
+
+    INSERT INTO `jeu` VALUES ('', 'Kluster', 'Kluster', 'Ambiance', '15','2022-01-15');
+    INSERT INTO `jeu` VALUES ('', 'JustOne', 'JustOne', 'AMbiance', '13','2022-01-15');
+    INSERT INTO `jeu` VALUES ('', 'Mission galerapagos', 'Mission galerapagos', 'aventure', '4','2022-01-15');
+    INSERT INTO `jeu` VALUES ('', 'Mito', 'Mito', 'Adulte', '99','2022-01-15');
+    INSERT INTO `jeu` VALUES ('', 'R6 ', 'R6 ', 'Enfant', '12','2020-03-13');

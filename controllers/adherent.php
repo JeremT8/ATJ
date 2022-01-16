@@ -1,5 +1,5 @@
 <?php
-require "models/jeu.php";
+require "models/adherent.php";
 
 $page = (int) filter_input(INPUT_GET, "currentPage", FILTER_SANITIZE_NUMBER_INT) ?? 1;
 
@@ -7,7 +7,7 @@ $search = filter_input(INPUT_GET, "search", FILTER_SANITIZE_STRING) ?? "";
 
 $pagination = [
     "numberPerPage" => 5,
-    "totalNumberOfRows" => countJeu($search),
+    "totalNumberOfRows" => countAdherent($search),
     "currentPage" => $page,
 ];
 
@@ -17,10 +17,10 @@ if($pagination["numberOfPages"] < $page){
     $pagination["currentPage"] = 2;
 }
 
-$jeu = findJeu($pagination, $search);
+$adherent = findAdherent($pagination, $search);
 
-echo render("jeu", [
-    "jeuList" => $jeu,
+echo render("adherent", [
+    "adherentList" => $adherent,
     "pagination" => $pagination,
     "search" => $search
 ]);
