@@ -164,3 +164,5 @@ CREATE TABLE `adherent` (
     INSERT INTO `jeu` VALUES ('', 'Mission galerapagos', 'Mission galerapagos', 'aventure', '4','2022-01-15');
     INSERT INTO `jeu` VALUES ('', 'Mito', 'Mito', 'Adulte', '99','2022-01-15');
     INSERT INTO `jeu` VALUES ('', 'R6 ', 'R6 ', 'Enfant', '12','2020-03-13');
+    INSERT INTO `jeu` VALUES ('', 'vegas ', 'hachette ', 'adulte', '16','2020-03-13');
+
