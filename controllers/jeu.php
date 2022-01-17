@@ -1,7 +1,7 @@
 <?php
 require "models/jeu.php";
 
-$page = (int) filter_input(INPUT_GET, "currentPage", FILTER_SANITIZE_NUMBER_INT) ?? 1;
+$page = filter_input(INPUT_GET, "currentPage", FILTER_SANITIZE_NUMBER_INT) ?? 1;
 
 $searchJeu = filter_input(INPUT_GET, "searchJeu", FILTER_SANITIZE_STRING) ?? "";
 
